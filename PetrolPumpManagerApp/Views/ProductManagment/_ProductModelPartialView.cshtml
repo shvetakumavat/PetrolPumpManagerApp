@@ -1,0 +1,30 @@
+﻿@model PetrolPumpManagerApp.Models.Product
+
+<div class="modal fade" id="addProduct">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="addProductLable">Add Product</h4>
+                <button type="button" class="close" data-dismiss="modal">
+                    <span>
+                        X
+                    </span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form action="CreateProduct">
+                    <div class="form-group">
+                       @Html.LabelFor(model=>Model.ProductName)
+                        @Html.TextBoxFor(model=>model.ProductName, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model=>model.ProductName)
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-save="modal">save</button>
+                <button type="button" class="btn btn-primary" data-dismiss="modal">close</button>
+            </div>
+        </div>
+    </div>
+</div>
+

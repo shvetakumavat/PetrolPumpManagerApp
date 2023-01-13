@@ -1,0 +1,90 @@
+﻿@model PetrolPumpManagerApp.Models.StaffLeave
+
+@{
+    ViewBag.Title = "StaffLeave";
+}
+
+
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <div class="card mt-4 border">
+        <div class="card-header bg-white"><h4><b>Leave</b></h4></div>
+
+        <div class="card-body">
+            <div class="form-horizontal">
+
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                <div style="margin:auto" class="col-lg-9 col-md-12 col-sm-12">
+                    <div class="form-group">
+                        <div class="row">
+                            @Html.LabelFor(model => model.Staff, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                              
+                                @Html.DropDownList("Staff", new List<SelectListItem> { new SelectListItem { Text = "Zatchbell", Value = "1" },
+                               new SelectListItem { Text = "Zenobell", Value = "2" } ,new SelectListItem { Text = "Tioo", Value = "1" },new SelectListItem { Text = "Vonryee", Value = "1" }},
+                               new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.Staff, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+
+                        <div class="row">
+                            @Html.LabelFor(model => model.StartDate, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.StartDate, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.StartDate, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="row">
+                            @Html.LabelFor(model => model.EndDate, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.EndDate, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.EndDate, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="row">
+                            @Html.LabelFor(model => model.LeaveReason, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.LeaveReason, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.LeaveReason, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                    </div>
+
+                   
+
+
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-md-2">
+                                <input type="submit" value="Submit" class="btn btn-primary mt-4 pl-4 pr-4" />
+                            </div>
+                           
+                        </div>
+                    </div>
+
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+}
+
+
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>

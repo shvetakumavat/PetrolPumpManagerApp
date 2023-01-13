@@ -1,0 +1,137 @@
+﻿@model PetrolPumpManagerApp.ViewModels.MachineCreateViewModel
+
+@{
+    ViewBag.Title = "Create";
+
+}
+
+
+
+@using (Html.BeginForm("Create", "Machine"))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="card mt-4 border">
+        <div class="card-header bg-white">
+            <span class="font-weight-bold h3" style="color:  rgb(137, 20, 254)">Machi</span><span class="font-weight-bold h3" style="color:black">nes Info</span>
+        </div>
+
+        <div class="card-body">
+            <div class="form-horizontal">
+
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                <div style="margin:auto" class="col-lg-9 col-md-12 col-sm-12">
+                    <div class="form-group">
+                        <div class="row">
+                            @Html.LabelFor(model => model.MachineModel.MachineName, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.MachineModel.MachineName, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.MachineModel.FuilType, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="row">
+                            @Html.LabelFor(model => model.MachineModel.MachineNumber, htmlAttributes: new { @class = "control-label col-md-2 col-sm-2" })
+                            <div class="col-md-3">
+                                @Html.EditorFor(model => model.MachineModel.MachineNumber, new { htmlAttributes = new { @class = "form-control " } })
+                                @Html.ValidationMessageFor(model => model.MachineModel.FuilType, "", new { @class = "text-danger" })
+                            </div>
+
+                            @Html.LabelFor(model => model.MachineModel.FuilType, htmlAttributes: new { @class = "control-label  col-md-2 col-sm-2 " })
+                            <div class="col-md-3">
+                                @Html.EditorFor(model => model.MachineModel.FuilType, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.MachineModel.FuilType, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="form-group">
+                        
+                           
+                        <p class="alert-warning p-1 h-25">Already Four nozzels are add. add new or Edit nozzels if you want</p>
+                        <div class="row mt-2">
+
+                            @Html.Label("Nozzels", htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-6">
+
+                                <table class="table   mt-2">
+                                    <tr class="">
+
+                                        <th>
+                                            Machine Nozzels
+                                        </th>
+                                        <th>Delete</th>
+                                    </tr>
+
+                                    @if (ViewBag.nozzels != null)
+                                    {
+                                        int nozzelId = 0;
+
+                                        foreach (var item in ViewBag.nozzels)
+                                        {
+
+                                            <tr class="">
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item)
+                                                </td>
+
+
+                                                <td>
+                                                    @Html.ActionLink(" ", "RemoveNozzelFromList", new { id = nozzelId  }, htmlAttributes: new { @class = "ti-trash text-danger" })
+                                                </td>
+                                            </tr>
+                                            nozzelId++;
+                                        }
+
+
+                                    }
+
+
+                                    <tr>
+                                        <td>
+                                            @Html.TextBox("Nozzel", "", new { @class = "form-control" })
+
+                                        </td>
+                                        <td>
+                                            <input type="submit" value="+" name="AddNozzel" class="text-info btn btn-light rounded-circle  " style="font-size:15px; font-weight:900" />
+                                            @*@Html.ActionLink(" ", "AddNozzel", new { Nozzel=Model.MachineNozzels }, htmlAttributes: new { @class = "  btn bg-light text-wornnig rounded-circle " })*@
+                                        </td>
+                                    </tr>
+
+                                </table>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-md-2">
+                                @*<input type="submit" value="Save" class="btn btn-primary mt-4 pl-4 pr-4" />*@
+                                <input type="submit" value="Save" name="submit" class="btn btn-primary mt-4 pl-4 pr-4 text-md-center " />
+                            </div>
+                            <div class=" col-md-2 ">
+                                <input type="submit" value="Reset" class="btn btn-outline-warning mt-4 pl-4 pr-4" />
+                            </div>
+
+                        </div>
+                    </div>
+
+
+                </div>
+
+            </div>
+        </div>
+        <div class="btn" style="-webkit-border-top-right-radius: 70px; -webkit-border-bottom-right-radius: 70px; -moz-border-radius-topright: 70px; -moz-border-radius-bottomright: 70px; border-top-right-radius: 70px; border-bottom-right-radius: 70px; width: 150px; background-image: linear-gradient(to right, rgb(137, 20, 254) 0%, rgb(128, 99, 245) 100%) ">
+            <i class="ti-arrow-left" style="color:white"></i>   @Html.ActionLink("Back to List", "Index", "", htmlAttributes: new { @class = "text-white" })
+        </div>
+
+    </div>
+
+}
+
+
+

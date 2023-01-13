@@ -1,0 +1,174 @@
+﻿
+@model IEnumerable<PetrolPumpManagerApp.Models.Tanker>
+@{
+    ViewBag.Title = "Home Page";
+}
+
+<div class="row ">
+ 
+    <!-- seo fact area start -->
+    <div class="col-lg-12">
+        <div class="row mt-3">
+            <div class="col-4">
+                <div class="card mt-1">
+                    <div class="seo-fact sbg2">
+                        <div class="p-4 d-flex justify-content-between align-items-center">
+                            <div class="seofct-icon"><i class="ti ti-bar-chart"></i> Sales</div>
+                             <div class="header-title text-white"><span class="fa fa-rupee" ></span>&nbsp;<span id="TotalSaleInDay"></span></div>
+                        </div>
+                        <canvas id="seolinechart2" height="50"></canvas>
+                    </div>
+                </div>
+                <div class="card mt-1">
+                    <div class="seo-fact sbg1">
+                        <div class="p-4 d-flex justify-content-between align-items-center">
+                            <div class="seofct-icon"><i class=" ti-stats-up" ></i>HSD Rates</div>
+                            <div class="header-title text-white"><span class="fa fa-rupee"></span>&nbsp;<span id="TodaysHSDRate"></span></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card mt-1">
+                    <div class="card">
+                        <div class="seo-fact sbg4">
+                            <div class="p-4 d-flex justify-content-between align-items-center">
+                                <div class="seofct-icon"><i class=" ti-stats-up"></i>MSD Rates</div>
+                                <div class=" header-title text-white"><span class="fa fa-rupee"></span>&nbsp;<span id="TodaysMSDRate"></span></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-8">
+                <div class="card">
+                    <div class="card-body pb-0">
+                        <h4 class="header-title">HSD/MSD Rates</h4>
+                        <div id="ambarchart3" style="height: 325px;"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+
+</div>
+<div class="row mt-2">
+    <div class="col-lg-12 ">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="header-title">HSD/MSD Sales</h4>
+                <div id="salesanalytic"></div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row mt-2">
+    <div class="col-lg-4 ">
+        <div class="card h-full">
+            <div class="card-body">
+                <h4 class="header-title">HSD/MS stock</h4>
+                <canvas id="seolinechart8" height="233"></canvas>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-8 ">
+        <div class="card ">
+            <div class="card-body">
+                <h4 class="header-title">TODO-list</h4>
+                <div class="card  border p-3 mb-5 bg-body rounded container " style="border-radius:70px; box-shadow: #dedddd 5px 5px 5px ">
+                    <div class="row">
+                        <div class="col-2">
+                            <img src="~/FrontEnd/tanker.png" />
+                        </div>
+                        <div class="col-8">
+                            <div class="p-1 ">
+                                <p class="p-2 alert-warning"> Tanker-3 reach to min Quntity 5 LTR.  </p>
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+<script src="~/FrontEnd/srtdash/assets/js/vendor/jquery-2.2.4.min.js"></script>
+<script src="~/FrontEnd/srtdash/assets/js/popper.min.js"></script>
+<script src="~/FrontEnd/srtdash/assets/js/bootstrap.min.js"></script>
+<script src="~/FrontEnd/srtdash/assets/js/owl.carousel.min.js"></script>
+<script src="~/FrontEnd/srtdash/assets/js/metisMenu.min.js"></script>
+<script src="~/FrontEnd/srtdash/assets/js/jquery.slimscroll.min.js"></script>
+<script src="~/FrontEnd/srtdash/assets/js/jquery.slicknav.min.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.min.js"></script>
+
+<script src="https://code.highcharts.com/highcharts.js"></script>
+<script src="https://code.highcharts.com/modules/exporting.js"></script>
+<script src="https://code.highcharts.com/modules/export-data.js"></script>
+
+<script src="https://www.amcharts.com/lib/3/amcharts.js"></script>
+<script src="https://www.amcharts.com/lib/3/ammap.js"></script>
+<script src="https://www.amcharts.com/lib/3/maps/js/worldLow.js"></script>
+<script src="https://www.amcharts.com/lib/3/serial.js"></script>
+<script src="https://www.amcharts.com/lib/3/plugins/export/export.min.js"></script>
+<script src="https://www.amcharts.com/lib/3/themes/light.js"></script>
+
+<script src="~/FrontEnd/srtdash/assets/js/line-chart.js"></script>
+
+<script src="~/FrontEnd/srtdash/assets/js/pie-chart.js"></script>
+
+<script src="~/FrontEnd/srtdash/assets/js/bar-chart.js"></script>
+
+<script src="~/FrontEnd/srtdash/assets/js/maps.js"></script>
+@*<script src="https://cdn.zingchart.com/zingchart.min.js"></script>
+    <script>
+        zingchart.MODULESDIR = "https://cdn.zingchart.com/modules/";
+        ZC.LICENSE = ["569d52cefae586f634c54f86dc99e6a9", "ee6b7db5b51705a13dc2339db3edaf6d"];
+    </script>*@
+
+<script src="https://cdn.zingchart.com/zingchart.min.js"></script>
+<script>
+    zingchart.MODULESDIR = "https://cdn.zingchart.com/modules/";
+    ZC.LICENSE = ["569d52cefae586f634c54f86dc99e6a9", "ee6b7db5b51705a13dc2339db3edaf6d"];
+</script>
+
+<script src="~/FrontEnd/srtdash/assets/js/plugins.js"></script>
+<script src="~/FrontEnd/srtdash/assets/js/scripts.js"></script>
+
+
+@section scripts{
+
+    <script>
+
+
+        $.get("/Home/GetCurrentRate", function (data) {
+            $("#TodaysHSDRate").text(data[0])
+            $("#TodaysMSDRate").text(data[1])
+
+        })
+
+
+
+
+            $.get("/Home/GetSalesChartData", function (data) {
+              
+                $.each(data, function (index, row) {
+                   
+                        if(row.SaleDate =="2022-11-26")
+                        {
+                            $("#TotalSaleInDay").text( row.OverAllSaleInAmt)
+                        }
+                      
+                })
+              
+            })
+
+
+    </script>
+}

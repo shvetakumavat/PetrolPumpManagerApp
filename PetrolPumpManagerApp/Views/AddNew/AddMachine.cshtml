@@ -1,0 +1,122 @@
+﻿@model PetrolPumpManagerApp.Models.Machine
+
+@{
+    ViewBag.Title = "AddMachine";
+}
+
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+<div class="card mt-4 border">
+    <div class="card-header bg-white"><span class="font-weight-bold h3" style="color:  rgb(137, 20, 254)">Machin</span><span class="font-weight-bold h3" style="color:black">es Info</span></div>
+
+    <div class="card-body">
+        <div class="form-horizontal">
+
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <div style="margin:auto" class="col-lg-9 col-md-12 col-sm-12">
+                <div class="form-group">
+                    <div class="row">
+                        @Html.LabelFor(model => model.MachineName, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.FuilType, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.FuilType, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="row">
+                        @Html.LabelFor(model => model.MachineNumber, htmlAttributes: new { @class = "control-label col-md-2 col-sm-2" })
+                        <div class="col-md-3">
+                            @Html.EditorFor(model => model.FuilType, new { htmlAttributes = new { @class = "form-control " } })
+                            @Html.ValidationMessageFor(model => model.FuilType, "", new { @class = "text-danger" })
+                        </div>
+
+                        @Html.LabelFor(model => model.FuilType, htmlAttributes: new { @class = "control-label  col-md-2 col-sm-2 " })
+                        <div class="col-md-3">
+                            @Html.EditorFor(model => model.FuilType, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.FuilType, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="form-group">
+                    <p class="alert-warning p-1 h-25">Already Four nozzels are add. add new or Edit nozzels if you want</p>
+                    <div class="row mt-2">
+
+                        @Html.Label("Add Nozzels", htmlAttributes: new { @class = "control-label  col-md-2 col-sm-2" })
+                        <div class="col-4 ">
+                            @Html.EditorFor(model => model.FuilType, new { htmlAttributes = new { @class = "form-control" } })
+                            <input type="submit" value="Add" class="btn-success btn mt-1" />
+                        </div>
+
+                    </div>
+                    <div class="row">
+                        @Html.LabelFor(model => model.Nozzels, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-7">
+                            @*@Html.ListBox("Nozzels", new List<SelectListItem> { new SelectListItem { Text = "MSDN1", Value = "1" },
+                                new SelectListItem { Text = "MSDN2", Value = "2" } ,new SelectListItem { Text = "HSDN1", Value = "1" },new SelectListItem { Text = "HSDN2", Value = "1" }}, new { @class = "form-control mt-2" })
+
+                                   @Html.ValidationMessageFor(model => model.FuilType, "", new { @class = "text-danger" })*@
+                            <table class="table  mt-2">
+                                <tr class="thead-light ">
+
+                                    <th>
+                                        Machine Nozzels
+                                    </th>
+                                    <th></th>
+                                </tr>
+                                @{
+                                    List<string> n = new List<string> { "MSDN1", "MSDN2", "MSDN3", "HSDN1" };
+                                    foreach (var item in n)
+                                    {
+                                        <tr>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item)
+                                            </td>
+
+
+                                            <td>
+                                                @Html.ActionLink(" ", "Edit", new { id = item }, htmlAttributes: new { @class = "fa fa-edit text-wornnig" }) |
+
+                                                @Html.ActionLink(" ", "delete", new { id = item }, htmlAttributes: new { @class = "ti-trash" })
+                                            </td>
+                                        </tr>
+                                    }
+                                }
+
+                            </table>
+                        </div>
+
+                    </div>
+
+                </div>
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-md-2">
+                            <input type="submit" value="Save" class="btn btn-primary mt-4 pl-4 pr-4" />
+                        </div>
+                        <div class=" col-md-2">
+                            <input type="submit" value="Reset" class="btn btn-outline-warning mt-4 pl-4 pr-4" />
+                        </div>
+
+                    </div>
+                </div>
+
+
+            </div>
+
+        </div>
+    </div>
+    <div class="btn" style="-webkit-border-top-right-radius: 70px; -webkit-border-bottom-right-radius: 70px; -moz-border-radius-topright: 70px; -moz-border-radius-bottomright: 70px; border-top-right-radius: 70px; border-bottom-right-radius: 70px; width: 150px; background-image: linear-gradient(to right, rgb(137, 20, 254) 0%, rgb(128, 99, 245) 100%) ">
+        <i class="ti-arrow-left" style="color:white"></i>   @Html.ActionLink("Back to List", "Machine", "", htmlAttributes: new { @class = "text-white" })
+    </div>
+    
+</div>
+
+}
+
+

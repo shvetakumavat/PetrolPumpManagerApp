@@ -1,0 +1,81 @@
+﻿@model IEnumerable<PetrolPumpManagerApp.Models.PurchaseProduct>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+
+
+<div class="card mt-4 border">
+    <div class="card-header bg-white"><span class="font-weight-bold h3" style="color:  rgb(137, 20, 254)">Mach</span><span class="font-weight-bold h3" style="color:black">ines</span></div>
+    <div class="card-body">
+        @if (Model != null)
+        {<div class="row p-1">
+
+    @foreach (var item in Model)
+    {
+
+        <div class="card  border p-3 mb-5 bg-body rounded container col-5" style="border-radius:70px; box-shadow: #dedddd 10px 10px 15px ">
+
+            <div class="row">
+                <div class="col-5">
+                    <img src="~/FrontEnd/purchase.png" class="mt-4" />
+                </div>
+
+                <div class="col-7">
+                    <div class="p-1">
+                        <div class="row">
+                            <div class="col  p-1"> Date :&nbsp;         @Html.DisplayFor(modelItem => item.Date) </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col  p-1">Product:&nbsp;  @Html.DisplayFor(modelItem => item.ProductName)</div>
+                        </div>
+
+
+                        <div class="row">
+                            <div class="col  p-1"> Supplier :&nbsp;  @Html.DisplayFor(modelItem => item.SupplierName)  </div>
+                        </div>
+                        <div class="row">
+                            <div class="col  p-1"> TankerID :&nbsp;   @Html.DisplayFor(modelItem => item.TankersId) </div>
+                        </div>
+                        <div class="row">
+                            <div class="col  p-1"> Tanker Name :&nbsp;         @Html.DisplayFor(modelItem => item.TankerName)  </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col  p-1"> Qntity :&nbsp;      @Html.DisplayFor(modelItem => item.Quantity) </div>
+                        </div>
+                        <div class="row">
+                            <div class="col  p-1"> Purchase Amount :&nbsp;        @Html.DisplayFor(modelItem => item.PurchaseAmount) </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col p-1 text-right mr-4">
+
+                                @Html.ActionLink(" ", "Edit", new { id = item.PurchaseId }, new { @class = " btn btn-outline-primary  fa fa-edit " }) &nbsp; &nbsp;&nbsp; &nbsp;
+                                @Html.ActionLink(" ", "Delete", new { id = item.PurchaseId }, new { @class = "btn btn-danger text-white ti ti-trash " })
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                
+            </div>
+
+        </div>
+
+    }
+
+
+    </div>
+        }
+        else
+        {
+            <p class="p-3 alert-danger">No Tanker please add new </p>
+        }
+    </div>
+    <div class="btn" style="-webkit-border-top-right-radius: 70px; -webkit-border-bottom-right-radius: 70px; -moz-border-radius-topright: 70px; -moz-border-radius-bottomright: 70px; border-top-right-radius: 70px; border-bottom-right-radius: 70px; width: 150px; background-image: linear-gradient(to right, rgb(137, 20, 254) 0%, rgb(128, 99, 245) 100%) ; ">
+        <i class="ti-plus" style="color:white"></i>   @Html.ActionLink("Add New", "Create", new { area = "" }, new { @class = "text-white" })
+    </div>
+</div>

@@ -1,0 +1,65 @@
+﻿@model IEnumerable<PetrolPumpManagerApp.Models.Machine>
+@{
+    ViewBag.Title = "Machine";
+}
+
+
+<div class="card mt-4 border">
+    <div class="card-header bg-white"><span class="font-weight-bold h3" style="color:  rgb(137, 20, 254)">Mac</span><span class="font-weight-bold h3" style="color:black">hines</span></div>
+
+    <div class="card-body">
+        @if (Model != null)
+        {
+            <table class="table ">
+              <thead class="bg-secondary" > <tr class="text-white">
+                    <th>
+                        @Html.DisplayNameFor(model => model.MachineNumber)
+                    </th>
+                    <th>
+                       MachineName
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.FuilType)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Nozzels)
+                    </th>
+                    <th>Edit</th>
+                </tr></thead>
+
+                @foreach (var item in Model)
+                {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.MachineNumber)
+                </td>
+                <td >
+                    @Html.DisplayFor(modelItem => item.MachineName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FuilType)
+                </td>
+                <td>
+                   4
+                </td>
+                <td>
+                    @Html.ActionLink(" ", "Edit", new { id = item.MachineID }, htmlAttributes: new { @class = "fa fa-edit text-wornnig" }) |
+
+                    @Html.ActionLink(" ", "delete", new { id = item.MachineID }, htmlAttributes: new { @class = "ti-trash" })
+                </td>
+            </tr>
+                }
+
+            </table>
+        }
+        else
+        {
+            <p class="p-3 alert-danger">No Machine please add new machine</p>
+        }
+
+    </div>
+
+    <div class="btn" style="-webkit-border-top-right-radius: 70px; -webkit-border-bottom-right-radius: 70px; -moz-border-radius-topright: 70px; -moz-border-radius-bottomright: 70px; border-top-right-radius: 70px; border-bottom-right-radius: 70px; width: 150px; background-image: linear-gradient(to right, rgb(137, 20, 254) 0%, rgb(128, 99, 245) 100%) ">
+        <i class="ti-plus" style="color:white"></i>   @Html.ActionLink("Add New", "Create", "Machine", htmlAttributes: new { @class = "text-white" })
+    </div>
+</div>

@@ -1,0 +1,85 @@
+﻿@model IEnumerable<PetrolPumpManagerApp.Models.Staff>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<div class="card mt-4 border">
+    <div class="card-header bg-white"><span class="font-weight-bold h3" style="color:  rgb(137, 20, 254)">Mach</span><span class="font-weight-bold h3" style="color:black">ines</span></div>
+    <div class="card-body">
+        @if (Model != null)
+        {<div class="row p-1">
+                @foreach (var item in Model)
+                {
+
+
+             <div class="card  border p-3 mb-5 bg-body rounded container col-10" style="border-radius:70px; box-shadow: #dedddd 10px 10px 15px ">
+                 <div class="row">
+                     <div class="col-3">
+                         <img src="~/FrontEnd/Staff.png" class="mt-4" />
+                     </div>
+                     <div class="col-4 border-right">
+                         <div class="p-1">
+                             <div class="row">
+                                 <div class="col  p-1"> Name :&nbsp;      @Html.DisplayFor(modelItem => item.FullName) </div>
+                             </div>
+                             <div class="row">
+                                 <div class="col  p-1">Email :&nbsp;   @Html.DisplayFor(modelItem => item.EmailAddress)</div>
+                             </div>
+                             <div class="row">
+                                 <div class="col  p-1">Mobile Number :&nbsp; @Html.DisplayFor(modelItem => item.ContactNumber)</div>
+                             </div>
+                             <div class="row">
+                                 <div class="col  p-1"> DOB :&nbsp;  @Html.DisplayFor(modelItem => item.DateOfBirth)</div>
+                             </div>
+                             <div class="row">
+                                 <div class="col  p-1"> Address :&nbsp;   @Html.DisplayFor(modelItem => item.Address)</div>
+                             </div>
+
+                         </div>
+
+                     </div>
+                     <div class="col-4 mr-1">
+                         <div class="p-1">
+                             <div class="row">
+                                 <div class="col  p-1"> Designation :&nbsp;  @Html.DisplayFor(modelItem => item.Designation)</div>
+                             </div>
+                             <div class="row">
+                                 <div class="col  p-1"> IsWorking :&nbsp;   @Html.DisplayFor(modelItem => item.IsWorking)</div>
+                             </div>
+                             <div class="row">
+                                 <div class="col  p-1"> Leaves :&nbsp;      @Html.DisplayFor(modelItem => item.TotalLeavesInMonth)</div>
+                             </div>
+                             <div class="row">
+                                 <div class="col  p-1"> Attendace :&nbsp;        @Html.DisplayFor(modelItem => item.TotalDayOFAttendenceInMonth)</div>
+
+                             </div>
+                             <div class="row">
+                                 <div class="col  p-1"> Salary :&nbsp;   @Html.DisplayFor(modelItem => item.Salary)</div>
+                             </div>
+                         </div>
+
+                     </div>
+                 </div>
+                 <div class="row">
+                     <div class="col p-1 text-right mr-4">
+
+                         @Html.ActionLink(" ", "Edit", new { id = item.StaffID }, new { @class = " btn btn-outline-primary  fa fa-edit " }) &nbsp; &nbsp;&nbsp; &nbsp;
+                         @Html.ActionLink(" ", "Delete", new { id = item.StaffID }, new { @class = "btn btn-danger text-white ti ti-trash " })
+                     </div>
+                 </div>
+
+             </div>
+
+                }
+            </div>
+        }
+        else
+        {
+            <p class="p-3 alert-danger">No Tanker please add new </p>
+        }
+    </div>
+    <div class="btn" style="-webkit-border-top-right-radius: 70px; -webkit-border-bottom-right-radius: 70px; -moz-border-radius-topright: 70px; -moz-border-radius-bottomright: 70px; border-top-right-radius: 70px; border-bottom-right-radius: 70px; width: 150px; background-image: linear-gradient(to right, rgb(137, 20, 254) 0%, rgb(128, 99, 245) 100%) ; ">
+        <i class="ti-plus" style="color:white"></i>   @Html.ActionLink("Add New", "Create", new { area = "" }, new { @class = "text-white" })
+    </div>
+</div>

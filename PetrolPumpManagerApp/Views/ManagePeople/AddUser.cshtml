@@ -1,0 +1,150 @@
+﻿
+@model PetrolPumpManagerApp.Models.User
+
+@{
+    ViewBag.Title = "AddUser";
+    Layout = null;
+
+}
+
+
+<html class="no-js" lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" type="image/png" href="~/FrontEnd/srtdash/assets/images/icon/favicon.ico">
+    <link rel="stylesheet" href="~/FrontEnd/srtdash/assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="~/FrontEnd/srtdash/assets/css/font-awesome.min.css">
+    <link rel="stylesheet" href="~/FrontEnd/srtdash/assets/css/themify-icons.css">
+    <link rel="stylesheet" href="~/FrontEnd/srtdash/assets/css/metisMenu.css">
+    <link rel="stylesheet" href="~/FrontEnd/srtdash/assets/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="~/FrontEnd/srtdash/assets/css/slicknav.min.css">
+    <!-- amchart css -->
+    <link rel="stylesheet" href="https://www.amcharts.com/lib/3/plugins/export/export.css" type="text/css" media="all" />
+    <!-- others css -->
+    <link rel="stylesheet" href="~/FrontEnd/srtdash/assets/css/typography.css">
+    <link rel="stylesheet" href="~/FrontEnd/srtdash/assets/css/default-css.css">
+    <link rel="stylesheet" href="~/FrontEnd/srtdash/assets/css/styles.css">
+    <link rel="stylesheet" href="~/FrontEnd/srtdash/assets/css/responsive.css">
+    <!-- modernizr css -->
+    <script src="~/FrontEnd/srtdash/assets/js/vendor/modernizr-2.8.3.min.js"></script>
+
+</head>
+<body>
+
+    <div class="login-area login-bg">
+        <div class="container-fluid p-0">
+            <div class="row no-gutters">
+                <div class="col-xl-4 offset-xl-8 col-lg-6 offset-lg-6">
+                    <div class="login-box-s2 ptb--100">
+                        <form>
+                            <div class="login-form-head">
+                                <h4 class="header-title">SignUp</h4>
+                                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                            </div>
+
+                            @using (Html.BeginForm())
+                            {
+                                @Html.AntiForgeryToken()
+
+
+                                <div class="login-form-body">
+                                    <div class="form-gp">
+                                        <label for="exampleInputName1">UserName</label>
+                                        @Html.EditorFor(model => model.UserName, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.UserName, "", new { @class = "text-danger" })
+                                        <div class="text-danger"></div>
+                                    </div>
+                                    <div class="form-gp">
+                                        <label for="exampleInputName1">Frist Name</label>
+                                        @Html.EditorFor(model => model.FristName, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.FristName, "", new { @class = "text-danger" })
+
+                                        <div class="text-danger"></div>
+                                    </div>
+                                    <div class="form-gp">
+                                        <label for="exampleInputName1">Last Name</label>
+                                        @Html.EditorFor(model => model.LastName, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.LastName, "", new { @class = "text-danger" })
+
+                                        <div class="text-danger"></div>
+                                    </div>
+                                    <div class="form-gp">
+                                        <label for="exampleInputName1">Password</label>
+                                        @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+
+                                        <div class="text-danger"></div>
+                                    </div>
+
+                                    <div class="form-gp">
+                                        <label for="exampleInputName1">Confirmed Password</label>
+                                        @Html.EditorFor(model => model.ConfirmedPassword, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.ConfirmedPassword, "", new { @class = "text-danger" })
+
+                                        <div class="text-danger"></div>
+                                    </div>
+
+                                    <div class="form-gp">
+                                        <label for="exampleInputName1">Email</label>
+                                        @Html.EditorFor(model => model.EmailAddress, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.EmailAddress, "", new { @class = "text-danger" })
+
+                                        <div class="text-danger"></div>
+                                    </div>
+
+
+                                    <div class="submit-btn-area">
+                                        <button id="form_submit" type="submit">Submit <i class="ti-arrow-right"></i></button>
+                                        <div class="login-other row mt-4">
+                                            <div class="col-6">
+                                                <a class="fb-login" href="#">Sign up with <i class="fa fa-facebook"></i></a>
+                                            </div>
+                                            <div class="col-6">
+                                                <a class="google-login" href="#">Sign up with <i class="fa fa-google"></i></a>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                            }
+                        </form>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- jquery latest version -->
+    <script src="~/FrontEnd/srtdash/assets/js/vendor/jquery-2.2.4.min.js"></script>
+    <!-- bootstrap 4 js -->
+    <script src="~/FrontEnd/srtdash/assets/js/popper.min.js"></script>
+    <script src="~/FrontEnd/srtdash/assets/js/bootstrap.min.js"></script>
+    <script src="~/FrontEnd/srtdash/assets/js/owl.carousel.min.js"></script>
+    <script src="~/FrontEnd/srtdash/assets/js/metisMenu.min.js"></script>
+    <script src="~/FrontEnd/srtdash/assets/js/jquery.slimscroll.min.js"></script>
+    <script src="~/FrontEnd/srtdash/assets/js/jquery.slicknav.min.js"></script>
+
+    <!-- others plugins -->
+    <script src="~/FrontEnd/srtdash/assets/js/plugins.js"></script>
+    <script src="~/FrontEnd/srtdash/assets/js/scripts.js"></script>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+
+    @Scripts.Render("~/bundles/jqueryval")
+
+
+
+</body>
+</html>
+
+
+
+
+

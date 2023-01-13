@@ -1,0 +1,140 @@
+﻿@model PetrolPumpManagerApp.Models.MeterReading
+
+@{
+    ViewBag.Title = "MeterReadings";
+}
+
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+<div class="card mt-4 border">
+    <div class="card-header bg-white"><h4><b>MeterReadings </b></h4></div>
+
+    <div class="card-body">
+        <div class="form-horizontal">
+
+
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <div style="margin:auto" class="col-lg-9 col-md-12 col-sm-12">
+
+                <div class="form-group">
+                    <div class="row">
+                        @Html.LabelFor(model => model.Date, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-4">
+                            @Html.EditorFor(model => model.Date, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.Date, "", new { @class = "text-danger" })
+                        </div>
+                        @Html.LabelFor(model => model.Machines, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-4">
+                            @Html.DropDownList("Staff", new List<SelectListItem> { new SelectListItem { Text = "Machine1", Value = "1" },
+                                 new SelectListItem { Text = "Machine2", Value = "2" } ,new SelectListItem { Text = "Machine3", Value = "1" },new SelectListItem { Text = "Machine4", Value = "1" }},
+                                 new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.Date, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="row">
+                        @Html.LabelFor(model => model.StaffAtThatDate, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-4">
+                            @Html.DropDownList("Staff", new List<SelectListItem> { new SelectListItem { Text = "Machine1", Value = "1" },
+                                 new SelectListItem { Text = "Machine2", Value = "2" } ,new SelectListItem { Text = "Machine3", Value = "1" },new SelectListItem { Text = "Machine4", Value = "1" }},
+                                 new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.Date, "", new { @class = "text-danger" })
+                        </div>
+
+                        @Html.LabelFor(model => model.FuilType, htmlAttributes: new { @class = "control-label col-md-2" })
+
+                        <div class="col-md-4">
+                            @Html.DropDownList("Staff", new List<SelectListItem> { new SelectListItem { Text = "Machine1", Value = "1" },
+                                new SelectListItem { Text = "Machine2", Value = "2" } ,new SelectListItem { Text = "Machine3", Value = "1" },new SelectListItem { Text = "Machine4", Value = "1" }},
+                                new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.FuilType, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="row">
+                        @Html.Label("Meter Opening", htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-2">
+                            @Html.EditorFor(model => model.OpeningReading, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.OpeningReading, "", new { @class = "text-danger" })
+                        </div>
+                        @Html.Label("Meter Closing", htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-2">
+                            @Html.EditorFor(model => model.ClosingReading, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.ClosingReading, "", new { @class = "text-danger" })
+                        </div>
+                        @Html.LabelFor(model => model.Test, htmlAttributes: new { @class = "control-label col-md-1" })
+                        <div class="col-md-2">
+                            @Html.EditorFor(model => model.Test, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.ClosingReading, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <table class="table  mt-2">
+                        <tr >
+                            <th>
+                                Fuel Type
+                            </th>
+                            <th>
+                                Sale
+                            </th>
+                            <th>
+                               Amount
+                            </th>
+                        </tr>
+                        <tr>
+                            <td>  @Html.LabelFor(model => model.SaleInLeters, htmlAttributes: new { @class = "control-label" })</td>
+                            <td>  00 ltr.</td>
+                            <td>  00 Rs.</td>
+                        </tr>
+                        <tr>
+                            <td>  @Html.LabelFor(model => model.SaleAmount, htmlAttributes: new { @class = "control-label " })</td>
+                            <td>  00 Ltr.</td>
+                            <td>  00 Rs.</td>
+                        </tr>
+                        <tfoot>
+                            <tr>
+                                <td colspan="2" class="text-right "> <b>Total Sale</b>    :</td>
+                                <td>  00 ltr.</td>
+                            </tr>
+                            <tr>
+                                <td colspan="2" class="text-right "> <b>Total Amount</b>   :</td>
+                                <td>  00 Rs.</td>
+                            </tr>
+                        </tfoot>
+                       
+                    </table>
+                </div>
+
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-md-2">
+                            <input type="submit" value="Save" class="btn btn-primary mt-4 pl-4 pr-4" />
+                        </div>
+                        <div class=" col-md-2">
+                            <input type="submit" value="Reset" class="btn btn-outline-warning mt-4 pl-4 pr-4" />
+                        </div>
+
+                    </div>
+                </div>
+
+
+            </div>
+
+        </div>
+    </div>
+
+    <div class="btn" style="-webkit-border-top-right-radius: 70px; -webkit-border-bottom-right-radius: 70px; -moz-border-radius-topright: 70px; -moz-border-radius-bottomright: 70px; border-top-right-radius: 70px; border-bottom-right-radius: 70px; width: 150px; background-image: linear-gradient(to right, rgb(137, 20, 254) 0%, rgb(128, 99, 245) 100%) ">
+        <i class="ti-arrow-left" style="color:white"></i>   @Html.ActionLink("Back to List", "GetMeterReadings", "", htmlAttributes: new { @class = "text-white" })
+    </div>
+</div>
+
+}
+

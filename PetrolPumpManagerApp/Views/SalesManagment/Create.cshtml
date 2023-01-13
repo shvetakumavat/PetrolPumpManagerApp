@@ -1,0 +1,303 @@
+﻿@model PetrolPumpManagerApp.Models.MeterReading
+@{
+    ViewBag.Title = "Create";
+}
+
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <div class="card mt-4 border">
+        <div class="card-header bg-white">
+            <span class="font-weight-bold h3" style="color:  rgb(137, 20, 254)">Meter</span><span class="font-weight-bold h3" style="color:black"> Reading</span>
+        </div>
+
+        <div class="card-body">
+            <div class="form-horizontal">
+
+               
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                <div style="margin:auto" class="col-lg-9 col-md-12 col-sm-12">
+
+                    <div class="form-group">
+                        <div class="row">
+                            @Html.Label("Date", htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-9">
+                                  @Html.EditorFor(model => model.Date, new { htmlAttributes = new { @class = "form-control col-5 float-left ",Type="date" } }) 
+                               
+                                @Html.ValidationMessageFor(model => model.Date, "", new { @class = "text-danger" })
+                            </div>
+                           
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="row">
+                            @Html.Label("Sales Man", htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-4">
+                                @Html.DropDownListFor(model => model.StaffId, new SelectList(ViewBag.StaffList, "StaffID", "FullName"), "--Select--", new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.StaffId, "", new { @class = "text-danger" })
+                            </div>
+
+                            @Html.Label("HSD/MSD", htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-4">
+                                @Html.DropDownListFor(model => model.ProductId, new SelectList(ViewBag.ProductList, "ProductID", "ProductName"), "--Select--", new { @class = "form-control" })
+
+                                @Html.ValidationMessageFor(model => model.ProductId, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="row">
+                            @Html.Label("Machine", htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-4">
+                                @Html.DropDownListFor(model => model.MachineId, new SelectList(ViewBag.MachineList, "MachineId", "MachineName"), "--Select--", new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.MachineId, "", new { @class = "text-danger" })
+                            </div>
+                            @Html.Label("Machine Nozzels", htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-4">
+                                @Html.DropDownListFor(model => model.NozzelId, new SelectList(" "), "--Select--", new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.NozzelId, "", new { @class = "text-danger" })
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <div class="form-group">
+                        <div class="row  mt-3">
+                            @Html.Label("Meter Opening", htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-2">
+                                @Html.EditorFor(model => model.OpeningReading, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.OpeningReading, "", new { @class = "text-danger" })
+                            </div>
+                            @Html.Label("Meter Closing", htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-2">
+                                @Html.EditorFor(model => model.ClosingReading, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.ClosingReading, "", new { @class = "text-danger" })
+                            </div>
+                            @Html.LabelFor(model => model.Test, htmlAttributes: new { @class = "control-label col-md-1" })
+                            <div class="col-md-2">
+                                @Html.EditorFor(model => model.Test, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.Test, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-md-2">
+                                <input type="submit" value="Save" class="btn btn-primary mt-4 pl-4 pr-4" />
+                            </div>
+                            <div class=" col-md-2">
+                                <input type="submit" value="Reset" class="btn btn-outline-warning mt-4 pl-4 pr-4" />
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="row  mt-3">
+                            @*<div class="col-2"><button type="button" id="CalcualteSaleBtn" class="btn text-white font-weight-normal"  style=" letter-spacing: 0.2pt; background-image: linear-gradient(to right, rgb(137, 20, 254) 0%, rgb(128, 99, 245) 100%) ">Show Sales</button></div>*@
+                            <div class="col p-1 ml-1">
+                                <p class="alert-danger p-1" id="ValidationForOpeningReadings">
+                                    &nbsp;  please select date and Product first for getting opening readings of nozzel
+                                </p>
+                            </div>
+
+
+                        </div>
+
+
+                    </div>
+
+                    <div class="form-group ">
+                        <table class="table table-responsive-xl   text-center mt-3">
+                            <tr>
+                                <th>
+                                    Fuel Type
+                                </th>
+                                <th>
+                                    Sale
+                                </th>
+                                <th>
+                                    Rate
+                                </th>
+                                <th>
+                                    Amount
+                                </th>
+
+                            </tr>
+                            <tr>
+                                <td> HSD </td>
+                                <td><span id="HSDSaleInLeters"></span>&nbsp;Ltr.</td>
+                                <td class="text-center">@Html.EditorFor(model => model.HSDRate, new { htmlAttributes = new { @class = "border-0 col-3 text-right" } })&nbsp;Rs. </td>
+                                <td><span id="HSDSaleInRupees"></span>&nbsp;Rs.</td>
+                            </tr>
+                            <tr>
+                                <td> MSD</td>
+                                <td> <span id="MSDSaleInLeters"></span>&nbsp;Ltr.</td>
+                                <td>@Html.EditorFor(model => model.MSDRate, new { htmlAttributes = new { @class = "border-0 col-3 text-right" } })&nbsp;Rs.</td>
+                                <td> <span id="MSDSaleInRupees"></span>&nbsp; Rs.</td>
+                            </tr>
+                            <tfoot>
+                              
+                                
+                                <tr>
+                                    <td colspan="3" class="text-right "> <b>Total Sale</b>    :</td>
+                                    <td> <span id="totalSaleInLeters"></span> &nbsp;ltr.</td>
+                                </tr>
+                                <tr>
+                                    <td colspan="3" class="text-right "> <b>Total Amount</b>   :</td>
+                                    <td> <span id="totalSaleInRupees"></span>&nbsp; Rs.</td>
+                                </tr>
+                            </tfoot>
+
+                        </table>
+                    </div>
+
+
+
+
+                </div>
+
+            </div>
+        </div>
+
+        <div class="btn" style="-webkit-border-top-right-radius: 70px; -webkit-border-bottom-right-radius: 70px; -moz-border-radius-topright: 70px; -moz-border-radius-bottomright: 70px; border-top-right-radius: 70px; border-bottom-right-radius: 70px; width: 150px; background-image: linear-gradient(to right, rgb(137, 20, 254) 0%, rgb(128, 99, 245) 100%) ">
+            <i class="ti-arrow-left" style="color:white"></i>   @Html.ActionLink("Back to List", "Index", "SalesManagment", htmlAttributes: new { @class = "text-white" })
+        </div>
+    </div>
+
+}
+
+
+
+
+@section Scripts{
+    <script>
+
+        $(document).ready(function () {
+            $("#ValidationForOpeningReadings").hide();
+
+            GetNozzels();
+
+
+            $.get("/Home/GetSalesDataByDate", function (data) {
+
+                $.each(data, function (index, row) {
+
+                    $("#HSDSaleInLeters").text(row.HSDSaleInLtr)
+                    $("#MSDSaleInLeters").text(row.MSDSaleInLtr)
+                    $("#totalSaleInLeters").text(row.OverAllSaleInLtr)
+                    $("#HSDSaleInRupees").text(row.HSDSaleInAmt)
+                    $("#MSDSaleInRupees").text(row.MSDSaleInAmt)
+                    $("#totalSaleInRupees").text(row.OverAllSaleInAmt)
+                });
+
+
+            });
+
+            function GetNozzels() {
+                $.get("/Home/GetMachineNozzels", { MachineId: $("#MachineId").val() }, function (data) {
+
+                    $("#NozzelId").empty();
+
+                    $.each(data, function (index, row) {
+
+                        $("#NozzelId").append("<option value='" + row.NozzelId + "'>" + row.NozzelName + "</option>")
+
+                    });
+                });
+
+            }
+           
+
+            $("#MachineId").change(function () {
+           
+                GetNozzels();
+            })
+
+            function Validate() {
+
+                var validateDateFild = $("#Date").val();
+                var validateProductId = $("#ProductId").val();
+                if (validateDateFild.length == "" || validateProductId.length == "") {
+                    $("#ValidationForOpeningReadings").show();
+                    $("#OpeningReading").val(0);
+
+                }
+                else {
+                    $("#ValidationForOpeningReadings").hide();
+                }
+            }
+
+           
+
+           
+            $("#NozzelId").change(function () {
+
+                Validate();
+                
+                $.get("/Home/GetopeningMeterValue", { NozzelId: $("#NozzelId").val(), MachineId: $("#MachineId").val(), Date: $("#Date").val(), ProductId: $("#ProductId").val() }, function (data) {
+
+                    $("#OpeningReading").val(data);
+           
+                });
+
+              
+            })
+
+            function CheackClosingReading() {
+                if ($("#OpeningReading").val() == 0.00) {
+                    $("#ValidationForOpeningReadings").hide()
+                }
+                if ($("#ClosingReading").val() <= $("#OpeningReading").val()) {
+                    $("#ValidationForOpeningReadings").text("closing meter reading value is smaller than opening meter please enter right value ")
+                    $("#ValidationForOpeningReadings").show()
+                }
+                //$("#ValidationForOpeningReadings").hide()
+               
+            }
+
+            $("#ClosingReading").focus(function () {
+                CheackClosingReading();
+            })
+            //$("#Test").change(
+            //    function () {
+
+            //        CheackClosingReading();
+            //    }
+            //)
+
+            function ShowProductRate() {
+
+                $.get("/Home/GetCurrentRate", { Date: $("#Date").val() }, function (data) {
+
+          /*          $("#HSDRate").text(data);*/
+
+                        $("#HSDRate").val(data[0]);
+                        $("#MSDRate").val(data[1]);
+                 
+                });
+
+
+
+            }
+
+
+
+            $("#Date").change(function () {
+                ShowProductRate();
+                Validate();
+            })
+            $("#ProductId").change(function () {
+               
+                Validate();
+               
+            })
+        });
+    </script>
+
+}
+
+@**@ 

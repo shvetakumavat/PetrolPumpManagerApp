@@ -1,0 +1,101 @@
+﻿@model IEnumerable<PetrolPumpManagerApp.Models.MeterReading>
+
+@{
+    ViewBag.Title = "GetMeterReadings";
+}
+
+<h2>GetMeterReadings</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+
+<div class="card mt-4 border">
+    <div class="card-header bg-white"><h4><b>Machines</b></h4></div>
+
+    <div class="card-body">
+        @if (Model != null)
+        {
+        <table class="table">
+            <tr  class=" text-white" style="background-image: linear-gradient(to right, rgb(137, 20, 254) 0%, rgb(128, 99, 245) 100%) ">
+                <th>
+                    @Html.DisplayNameFor(model => model.OpeningReading)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ClosingReading)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Date)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.SaleInLeters)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.NetSale)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Test)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.SaleAmount)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.TatalSalesInLeter)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.TatalSalesAmount)
+                </th>
+                <th></th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.OpeningReading)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ClosingReading)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Date)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.SaleInLeters)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.NetSale)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Test)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.SaleAmount)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.TatalSalesInLeter)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.TatalSalesAmount)
+                    </td>
+                    <td>
+                        @Html.ActionLink(" ", "Edit", new { id = item.ID }, htmlAttributes: new { @class = "fa fa-edit text-wornnig" }) |
+
+                        @Html.ActionLink(" ", "delete", new { id = item.ID }, htmlAttributes: new { @class = "ti-trash" })
+                    </td>
+                </tr>
+            }
+
+        </table>
+        }
+        else
+        {
+            <p class="p-3 alert-danger">No Readings please add new machine</p>
+        }
+
+    </div>
+
+    <div class="btn" style="-webkit-border-top-right-radius: 70px; -webkit-border-bottom-right-radius: 70px; -moz-border-radius-topright: 70px; -moz-border-radius-bottomright: 70px; border-top-right-radius: 70px; border-bottom-right-radius: 70px; width: 150px; background-image: linear-gradient(to right, rgb(137, 20, 254) 0%, rgb(128, 99, 245) 100%) ">
+        <i class="ti-plus" style="color:white"></i>   @Html.ActionLink("Add New", "MeterReadings", "", htmlAttributes: new { @class = "text-white" })
+    </div>
+</div>

@@ -1,0 +1,65 @@
+﻿@model IEnumerable<PetrolPumpManagerApp.Models.ProductRate>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+
+<div class="card mt-4 border">
+    <div class="card-header bg-white"><span class="font-weight-bold h3" style="color:  rgb(137, 20, 254)">Daily</span><span class="font-weight-bold h3" style="color:black">Rates</span></div>
+
+    <div class="card-body">
+        @if (Model != null)
+        {
+            <table class="table w-75 m-auto ">
+                <thead style="background-image: linear-gradient(to right, rgb(137, 20, 254) 0%, rgb(128, 99, 245) 100%) ">
+                    <tr class="text-white">
+                     
+                        <th>
+                            Product
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Rate)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Date)
+                        </th>
+                        <th>Edit</th>
+                    </tr>
+                </thead>
+
+                @foreach (var item in Model)
+                {
+                    <tr>
+                    
+                
+                        <td >
+                            @Html.DisplayFor(modelItem => item.ProductName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Rate)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Date)
+                        </td>
+                        <td>
+                            @Html.ActionLink(" ", "Edit", new { id = item.RateId }, htmlAttributes: new { @class = "fa fa-edit text-wornnig" }) |
+
+                            @Html.ActionLink(" ", "Delete", new { id = item.RateId }, htmlAttributes: new { @class = "ti-trash" })
+                        </td>
+                    </tr>
+                }
+
+            </table>
+        }
+        else
+        {
+            <p class="p-3 alert-danger">No Machine please add new machine</p>
+        }
+
+    </div>
+
+    <div class="btn" style="-webkit-border-top-right-radius: 70px; -webkit-border-bottom-right-radius: 70px; -moz-border-radius-topright: 70px; -moz-border-radius-bottomright: 70px; border-top-right-radius: 70px; border-bottom-right-radius: 70px; width: 150px; background-image: linear-gradient(to right, rgb(137, 20, 254) 0%, rgb(128, 99, 245) 100%) ">
+        <i class="ti-plus" style="color:white"></i>   @Html.ActionLink("Add New", "Create", "Machine", htmlAttributes: new { @class = "text-white" })
+    </div>
+</div>

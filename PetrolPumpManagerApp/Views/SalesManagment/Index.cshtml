@@ -1,0 +1,242 @@
+﻿@model PetrolPumpManagerApp.ViewModels.SaleIndexViewModel
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<style>
+    .slider {
+        /**/
+        position: absolute;
+     
+      
+    }
+</style>
+
+<div class="card mt-4 border">
+    <div class="card-header bg-white"><span class="font-weight-bold h3" style="color:  rgb(137, 20, 254)">Todays </span><span class="font-weight-bold h3" style="color:black">Sale</span></div>
+    <div class="card-body">
+
+        @if (Model != null)
+        {
+            <div class="card col-11  container">
+              
+                    @*box-shadow:#808080 5px 5px 10px*@
+                    <main style="width:87%; height: 500px;margin: auto; position: relative; overflow: hidden">
+
+
+                        @foreach (var item in  Model.SalesMan)
+                        {
+
+                            <div class="card  mt-3 border col-12 slider">
+
+                                <div class="row mt-2">
+                                    <div class="col-3 ">
+                                        <img src="~/FrontEnd/Staff.png" class="mt-4" />
+
+                                    </div>
+                                    <div class="col-9 ">
+                                        <div class=" p-1 mt-4"><span class="h5"> @Html.DisplayFor(model => item.StaffName)</span> </div>
+
+                                        <div class="  p-1 ">ID -  @Html.DisplayFor(model => item.staffId) </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-9 m-auto ">
+                                        <div class="card ">
+                                            <div class=" bg-white p-2 mt-2"><span class="h5" style="color:black">Product Sale by</span><span class="h5" style="color:  rgb(137, 20, 254)">  @Html.DisplayFor(model => item.StaffName)</span></div>
+                                            @*<div class="mt-2 p-2 h6 "> </div>*@
+                                            <div class="card-body">
+                                                <table class="table">
+                                                    <tr>
+                                                        <th>
+                                                            product
+                                                        </th>
+                                                        <th>
+                                                            Quantity
+                                                        </th>
+                                                        <th>
+                                                            Amount
+                                                        </th>
+                                                    </tr>
+                                                    @foreach (var i in item.sale)
+                                                    {
+
+                                                        <tr>
+                                                            <td>
+                                                                @Html.DisplayFor(model => i.ProductName)
+                                                            </td>
+                                                            <td>
+                                                                @Html.DisplayFor(model => i.SaleInLeters)
+                                                            </td>
+                                                            <td>
+                                                                @Html.DisplayFor(model => i.SaleAmount)
+                                                            </td>
+                                                        </tr>
+                                                    }
+
+                                                    <tfoot>
+
+
+                                                        <tr>
+                                                            <td class="text-right " colspan="2"> <b>Total Sale</b>    :</td>
+                                                            <td>  @Html.DisplayFor(model => item.TSale) &nbsp;ltr.</td>
+                                                        </tr>
+                                                        <tr>
+
+                                                            <td class="text-right " colspan="2"> <b>Total Amount</b>   :</td>
+                                                            <td>  @Html.DisplayFor(model => item.TSaleAmount)&nbsp; Rs.</td>
+                                                        </tr>
+                                                    </tfoot>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+
+
+                        }
+                    </main>
+
+         
+
+
+
+                <div class="row mt-3">
+                    <div class="col-1" style="-webkit-border-top-right-radius: 70px; -webkit-border-bottom-right-radius: 70px; -moz-border-radius-topright: 70px; -moz-border-radius-bottomright: 70px; border-top-right-radius: 70px; border-bottom-right-radius: 70px; width: 150px; background-image: linear-gradient(to right, rgb(137, 20, 254) 0%, rgb(128, 99, 245) 100%); ">
+                        <button type="button" id="prev" class="btn bg-transparent text-white"><i class="fa fa-arrow-left p-1  text-white"></i></button>
+                    </div><div class="col-10"></div>
+                    <div class="col-1 text-right " style="-webkit-border-top-left-radius: 70px; -webkit-border-bottom-left-radius: 70px; -moz-border-radius-topleft: 70px; -moz-border-radius-bottomleft: 70px; border-top-left-radius: 70px; border-bottom-left-radius: 70px; width: 150px; background-image: linear-gradient(to right, rgb(137, 20, 254) 0%, rgb(128, 99, 245) 100%) ; ">
+                        <button type="button" id="next" class="btn bg-transparent  text-white"><i class="fa fa-arrow-right  text-white p-1"></i></button>
+                    </div>
+                </div>
+
+            </div>
+
+
+
+            <div class="row mt-4">
+                <div class="col p-1  ">
+                    <div class="card  border p-3 mb-5 bg-body rounded container col-10">
+                        <div class="h5 m-1"><span class="font-weight-bold h3" style="color:  rgb(137, 20, 254)">Meter</span><span class="font-weight-bold h3" style="color:black"> Readings</span></div>
+                        <div class="card-body">
+                            <table class="table ">
+
+                                <tr>
+                                    <th>Machine Name</th>
+                                    <th>
+                                        Nozzels
+                                    </th>
+                                    <th>
+                                        Meter Closings
+                                    </th>
+                                    <th>-</th>
+
+                                </tr>
+                                @foreach (var i in Model.meterReading)
+                                {
+
+                            <tr>
+                                <td>@Html.DisplayFor(model => i.MachineName) </td>
+                                <td>
+                                    @Html.DisplayFor(model => i.NozzelName)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(model => i.ClosingReading)
+                                </td>
+                                <td>
+                                    @Html.ActionLink(" ", "Edit", new { id = 1 }, new { @class = "  fa fa-edit " }) &nbsp; &nbsp;&nbsp; &nbsp;
+                                    @Html.ActionLink(" ", "Delete", new { id = 1 }, new { @class = "text-danger ti ti-trash " })
+                                </td>
+                            </tr>
+                                    
+
+                                }
+
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        }
+        else
+        {
+            <p class="p-3 alert-danger">No Sale Entry</p>
+        }
+
+    </div>
+
+    <div class="btn" style="-webkit-border-top-right-radius: 70px; -webkit-border-bottom-right-radius: 70px; -moz-border-radius-topright: 70px; -moz-border-radius-bottomright: 70px; border-top-right-radius: 70px; border-bottom-right-radius: 70px; width: 150px; background-image: linear-gradient(to right, rgb(137, 20, 254) 0%, rgb(128, 99, 245) 100%) ; ">
+        <i class="ti-plus" style="color:white"></i>   @Html.ActionLink("Meter Readings", "Create", new { area = "" }, new { @class = "text-white" })
+    </div>
+</div>
+
+@section Scripts{
+    <script>
+        $(document).ready(function () {
+
+
+            const slides = document.querySelectorAll(".slider")
+
+            var count = 0;
+            slides.forEach(
+
+                (slider, index) => {
+
+                    slider.style.bottom = `${index * 130}%`
+                }
+            )
+
+            const SlideDiv = () => {
+               
+                slides.forEach(
+
+                    (slider) => {
+                        if (count > -1) {
+
+                            if (count < slides.length) {
+
+
+                                slider.style.transform = `translateY(${count * 138}%)`
+
+                            }
+                            else {
+
+                                count--;
+                            }
+                        }
+                        else {
+
+                            count++;
+                        }
+                        
+                    }
+                )
+            }
+            $("#prev").click(function () {
+               
+                count--;
+                
+              
+                SlideDiv();
+              
+           
+            })
+            $("#next").click(function () {
+                count++;
+               
+                SlideDiv();
+               
+            })
+
+        });
+       
+        
+    </script>
+
+}
+
+
