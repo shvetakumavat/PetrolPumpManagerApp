@@ -54,7 +54,7 @@ The project follows the standard structure of an ASP.NET MVC application:
 
 
  ### Start Page
-<img src="https://github.com/shvetakumavat/sharecode/blob/master/IMG/1.PNG" alt="Alt Text">
+<img src="https://github.com/shvetakumavat/PetrolPumpManagerApp/blob/master/sc/1.PNG" alt="Alt Text">
 
 ### Pagination 
 <img src="https://github.com/shvetakumavat/sharecode/blob/master/IMG/2.PNG" alt="Alt Text">
