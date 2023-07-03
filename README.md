@@ -53,15 +53,34 @@ The project follows the standard structure of an ASP.NET MVC application:
  ## A Glimpse into the Project: Screenshots
 
 
- ### Start Page
+ ### Dashboard
 <img src="https://github.com/shvetakumavat/PetrolPumpManagerApp/blob/master/sc/1.PNG" alt="Alt Text">
 
-### Pagination 
-<img src="https://github.com/shvetakumavat/sharecode/blob/master/IMG/2.PNG" alt="Alt Text">
+<img src="https://github.com/shvetakumavat/PetrolPumpManagerApp/blob/master/sc/2.PNG" alt="Alt Text">
 
-### Login Page
+### Menubar
+<img src="https://github.com/shvetakumavat/PetrolPumpManagerApp/blob/master/sc/3.PNG" alt="Alt Text">
 
-<img src="https://github.com/shvetakumavat/sharecode/blob/master/IMG/3.PNG" alt="Alt Text">
+### Purchase Entry Form
 
-### Create Post Page
-<img src="https://github.com/shvetakumavat/sharecode/blob/master/IMG/4.PNG" alt="Alt Text">
+<img src="https://github.com/shvetakumavat/PetrolPumpManagerApp/blob/master/sc/12.PNG" alt="Alt Text">
+
+### Daily Rate From 
+<img src="https://github.com/shvetakumavat/PetrolPumpManagerApp/blob/master/sc/4.PNG" alt="Alt Text">
+
+### Meter Reading Form
+<img src="https://github.com/shvetakumavat/PetrolPumpManagerApp/blob/master/sc/5.PNG" alt="Alt Text">
+<img src="https://github.com/shvetakumavat/PetrolPumpManagerApp/blob/master/sc/6.PNG" alt="Alt Text">
+
+### Todays Sales
+<img src="https://github.com/shvetakumavat/PetrolPumpManagerApp/blob/master/sc/7.PNG" alt="Alt Text">
+<img src="https://github.com/shvetakumavat/PetrolPumpManagerApp/blob/master/sc/8.PNG" alt="Alt Text">
+
+### Employee Information 
+<img src="https://github.com/shvetakumavat/PetrolPumpManagerApp/blob/master/sc/9.PNG" alt="Alt Text">
+
+### Machine information Entry form 
+<img src="https://github.com/shvetakumavat/PetrolPumpManagerApp/blob/master/sc/10.PNG" alt="Alt Text">
+
+<img src="https://github.com/shvetakumavat/PetrolPumpManagerApp/blob/master/sc/11.PNG" alt="Alt Text">
+
