@@ -50,7 +50,18 @@ The project follows the standard structure of an ASP.NET MVC application:
 - **Scripts**: Contains JavaScript files for client-side functionality.
 - **Content**: Contains CSS files and other static assets for styling the application.
 
-## Contributing
+ ## A Glimpse into the Project: Screenshots
 
-Contributions to this project are welcome. You can contribute by submitting bug reports, feature requests, or pull requests to the project repository.
 
+ ### Start Page
+<img src="https://github.com/shvetakumavat/sharecode/blob/master/IMG/1.PNG" alt="Alt Text">
+
+### Pagination 
+<img src="https://github.com/shvetakumavat/sharecode/blob/master/IMG/2.PNG" alt="Alt Text">
+
+### Login Page
+
+<img src="https://github.com/shvetakumavat/sharecode/blob/master/IMG/3.PNG" alt="Alt Text">
+
+### Create Post Page
+<img src="https://github.com/shvetakumavat/sharecode/blob/master/IMG/4.PNG" alt="Alt Text">
